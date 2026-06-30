@@ -12,7 +12,18 @@ public interface EmployeeService {
 
     void save(Employee employee);
 
-    List<Employee> findALlEmployees();
+    List<Employee> findAllEmployees();
 
-    void deleteEmp(int eid);
+    void deleteEmp(int empid);
+
+    Employee findEmployee(int empid);
+
+
+    void updateEmployee(Employee employee);
+
+    //List<Employee> findAllEmployees();
+
+    //Employee findEmployee(int empid);
+
+    //Employee findEmployee(int empid);
 }    // we make this

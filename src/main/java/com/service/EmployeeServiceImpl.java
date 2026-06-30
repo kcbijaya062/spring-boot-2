@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -27,7 +28,7 @@ EmployeeRepository employeeRepository ;   // sservice layer calls Dao layer
     }
 
     @Override
-    public List<Employee> findALlEmployees() {
+    public List<Employee> findAllEmployees() {
        List<Employee> employeelist = employeeRepository.findAll();
         return employeelist;
     }
@@ -36,5 +37,32 @@ EmployeeRepository employeeRepository ;   // sservice layer calls Dao layer
     public void deleteEmp(int eid) {
         employeeRepository.deleteById(eid);
     }
+
+    @Override
+    public Employee findEmployee(int empid) {
+        Optional<Employee> optional = employeeRepository.findById(empid);
+        if (optional.isEmpty()) {
+
+            return null;
+        } else{
+            return optional.get();
+        }
+
+
+    }
+
+
+    @Override
+    public void updateEmployee(Employee employee) {
+        employeeRepository.save(employee);
+
+    }
+
+//    @Override
+//    public List<Employee> findAllEmployees() {
+//        return List.of();
+//    }
+
+
 
 }
